@@ -86,86 +86,86 @@ export default function ProductList({ refreshTrigger }: ProductListProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {/* Search and Filters */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-4">
         <input
           type="text"
-          placeholder="Search products or brands..."
+          placeholder="search products or brands..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+          className="rounded-md border border-gray-300 px-4 py-2.5 text-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
         />
 
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+          className="rounded-md border border-gray-300 px-4 py-2.5 text-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
         >
-          <option value="all">All Categories</option>
-          <option value="cleanser">Cleanser</option>
-          <option value="moisturizer">Moisturizer</option>
-          <option value="serum">Serum</option>
-          <option value="sunscreen">Sunscreen</option>
-          <option value="treatment">Treatment</option>
-          <option value="other">Other</option>
+          <option value="all">all categories</option>
+          <option value="cleanser">cleanser</option>
+          <option value="moisturizer">moisturizer</option>
+          <option value="serum">serum</option>
+          <option value="sunscreen">sunscreen</option>
+          <option value="treatment">treatment</option>
+          <option value="other">other</option>
         </select>
 
         <select
           value={ratingFilter}
           onChange={(e) => setRatingFilter(e.target.value)}
-          className="rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+          className="rounded-md border border-gray-300 px-4 py-2.5 text-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
         >
-          <option value="all">All Ratings</option>
-          <option value="loved_it">Loved It</option>
-          <option value="liked_it">Liked It</option>
-          <option value="neutral">Neutral</option>
-          <option value="disliked_it">Disliked It</option>
-          <option value="broke_me_out">Broke Me Out</option>
+          <option value="all">all ratings</option>
+          <option value="loved_it">loved it</option>
+          <option value="liked_it">liked it</option>
+          <option value="neutral">neutral</option>
+          <option value="disliked_it">disliked it</option>
+          <option value="broke_me_out">broke me out</option>
         </select>
 
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as 'date' | 'name')}
-          className="rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500"
+          className="rounded-md border border-gray-300 px-4 py-2.5 text-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
         >
-          <option value="date">Sort by Date</option>
-          <option value="name">Sort by Name</option>
+          <option value="date">sort by date</option>
+          <option value="name">sort by name</option>
         </select>
       </div>
 
       {/* Products List */}
       {filteredProducts.length === 0 ? (
-        <div className="rounded-lg bg-white p-8 text-center shadow">
+        <div className="rounded-lg border border-gray-200 bg-white p-12 text-center">
           <p className="text-gray-500">
             {searchTerm || categoryFilter !== 'all' || ratingFilter !== 'all'
-              ? 'No products match your filters.'
-              : 'No products yet. Add your first product to get started!'}
+              ? 'no products match your filters'
+              : 'no products yet. add your first product to get started!'}
           </p>
         </div>
       ) : (
         <div className="grid gap-4">
           {filteredProducts.map((product) => (
-            <div key={product.id} className="rounded-lg bg-white p-6 shadow hover:shadow-md transition-shadow">
+            <div key={product.id} className="rounded-lg border border-gray-200 bg-white p-6 transition-shadow hover:shadow-sm">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-medium text-gray-900">
                       {product.product_name}
                     </h3>
-                    <span className={`rounded-full px-3 py-1 text-xs font-medium ${RATING_COLORS[product.rating]}`}>
+                    <span className={`rounded-md px-2.5 py-1 text-xs font-medium ${RATING_COLORS[product.rating]}`}>
                       {RATING_LABELS[product.rating]}
                     </span>
                   </div>
 
-                  <div className="mt-1 flex items-center gap-4 text-sm text-gray-600">
-                    {product.brand && <span className="font-medium">{product.brand}</span>}
-                    <span className="capitalize">{product.category}</span>
+                  <div className="mt-1.5 flex items-center gap-4 text-sm text-gray-500">
+                    {product.brand && <span className="font-medium text-gray-600">{product.brand}</span>}
+                    <span>{product.category}</span>
                     <span>{new Date(product.created_at).toLocaleDateString()}</span>
                   </div>
 
                   {product.notes && (
-                    <p className="mt-3 text-sm text-gray-700">{product.notes}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">{product.notes}</p>
                   )}
                 </div>
               </div>
@@ -176,8 +176,8 @@ export default function ProductList({ refreshTrigger }: ProductListProps) {
 
       {/* Results count */}
       {filteredProducts.length > 0 && (
-        <p className="text-sm text-gray-500 text-center">
-          Showing {filteredProducts.length} of {products.length} products
+        <p className="text-center text-sm text-gray-400">
+          showing {filteredProducts.length} of {products.length} products
         </p>
       )}
     </div>

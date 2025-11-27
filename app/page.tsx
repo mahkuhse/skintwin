@@ -11,19 +11,41 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
-      <div className="max-w-2xl px-8 text-center">
-        <h1 className="text-5xl font-bold tracking-tight text-gray-900">
-          SkinTwin
+    <div className="min-h-screen bg-white">
+      {/* Simple Navigation */}
+      <nav className="border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md border-2 border-purple-400">
+                <span className="text-lg font-semibold text-purple-500">ST</span>
+              </div>
+              <span className="text-xl font-medium text-gray-900">SkinTwin</span>
+            </div>
+            <Link
+              href="/login"
+              className="text-sm text-gray-600 hover:text-purple-500"
+            >
+              login / register
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="mx-auto max-w-4xl px-6 py-24 text-center">
+        <h1 className="text-5xl font-normal tracking-tight text-gray-900">
+          track your skincare journey
         </h1>
-        <p className="mt-6 text-lg leading-8 text-gray-600">
-          Your personal skincare product tracker. Remember what works for your skin,
-          avoid repeating mistakes, and build your skincare knowledge over time.
+        <p className="mt-8 text-lg leading-relaxed text-gray-600">
+          Remember what works for your skin, avoid repeating mistakes,
+          <br />
+          and build your skincare knowledge over time.
         </p>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
+        <div className="mt-12">
           <Link
             href="/login"
-            className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            className="inline-block rounded-md bg-purple-500 px-8 py-3 text-sm font-medium text-white hover:bg-purple-600 transition-colors"
           >
             Get started
           </Link>

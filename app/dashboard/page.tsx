@@ -39,33 +39,34 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 justify-between">
-            <div className="flex">
-              <div className="flex flex-shrink-0 items-center">
-                <h1 className="text-xl font-bold text-gray-900">SkinTwin</h1>
+    <div className="min-h-screen bg-white">
+      <nav className="border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md border-2 border-purple-400">
+                <span className="text-lg font-semibold text-purple-500">ST</span>
               </div>
+              <span className="text-xl font-medium text-gray-900">SkinTwin</span>
             </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-700">{user.email}</span>
+            <div className="flex items-center gap-6">
+              <span className="text-sm text-gray-500">{user.email}</span>
               <button
                 onClick={handleSignOut}
-                className="text-sm text-gray-600 hover:text-gray-900"
+                className="text-sm text-gray-600 hover:text-purple-500"
               >
-                Sign out
+                sign out
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between">
+      <main className="mx-auto max-w-7xl px-6 py-12">
+        <div className="mb-10 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">My Skincare Products</h2>
-            <p className="mt-1 text-sm text-gray-600">Track products you've tried and your experiences</p>
+            <h2 className="text-3xl font-normal text-gray-900">my skincare products</h2>
+            <p className="mt-2 text-sm text-gray-500">track products you've tried and your experiences</p>
           </div>
           <AddProductForm onSuccess={() => setRefreshTrigger(prev => prev + 1)} />
         </div>
